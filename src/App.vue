@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>List of books</h1>
+    <BooksList
+    v-if="books.lenght"
+    v-bind:books="books"
+    />
+    <p v-else>No books!</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BooksList from '@/components/BooksList'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BooksList
+  },
+  data() {
+    return {
+      books: []
+    }
+  },
+  mounted() {
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
+      .then(response => response.json())
+      .then(json => {
+        this.todos = json
+      })
   }
 }
 </script>
@@ -22,7 +38,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>
