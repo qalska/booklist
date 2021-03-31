@@ -1,8 +1,15 @@
 <template>
-  <div id="app">
-    <h1>BooksList</h1>
-
-    <router-view />
+  <div>
+    <AddBook 
+      @add-book="addBook"
+    />
+    <hr>
+    <BooksList
+      v-if="books.length"
+      v-bind:books="books"
+      @remove-book="removeBook"
+    />
+    <p v-else>No books!</p>
   </div>
 </template>
 
@@ -33,14 +40,3 @@ export default {
 
 }
 </script>
-
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
