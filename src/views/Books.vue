@@ -11,7 +11,6 @@
       @remove-book="removeBook"
     />
     <p v-else>No books!</p>
-    <router-link to="/create" class="btn">Create</router-link>
   </div>
 </template>
 

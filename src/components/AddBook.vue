@@ -36,6 +36,11 @@ export default {
     input {
         width: 300px;
         margin-right: 30px;
+        border: 2px #aaa solid;
+        border-radius: 5px;
+        padding: 5px 5px;
+        text-align: center;
+        font-size: 16px;
     }
     button {
         background: #ccc;

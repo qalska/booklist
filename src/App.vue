@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import BooksList from '@/components/BooksList'
-import AddBook from '@/components/AddBook'
+// import BooksList from '@/components/BooksList'
+// import AddBook from '@/components/AddBook'
 
 export default {
   name: 'app',
@@ -27,9 +27,9 @@ export default {
       this.books.push(book)
     }
   },
-  components: {
-    BooksList, AddBook
-  }
+  // components: {
+  //   BooksList, AddBook
+  // }
 
 }
 </script>
