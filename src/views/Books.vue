@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Create new book!</h2>
     <AddBook 
       @add-book="addBook"
     />
@@ -10,6 +11,7 @@
       @remove-book="removeBook"
     />
     <p v-else>No books!</p>
+    <router-link to="/create" class="btn">Create</router-link>
   </div>
 </template>
 
@@ -40,3 +42,17 @@ export default {
 
 }
 </script>
+
+<style scoped>
+  .btn {
+    font-size: 36px;
+    background: #ccc;
+    border: 2px #aaa solid;
+    border-radius: 5px;
+    padding: .5rem 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    margin-top: 100px;
+  }
+</style>

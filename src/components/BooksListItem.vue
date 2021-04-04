@@ -1,14 +1,26 @@
 <template>
     <li>
-        <span v-bind:class="{done: book.completed}">
-            <input type="checkbox" 
-            v-on:change="book.completed = !book.completed">
-            {{book.title}}
-            {{book.author}}
-        </span>
-        <button 
-        v-on:click="$emit('remove-book', book.id)"
-        >Delete</button>
+        <div v-show="!isEditing">
+            <span v-bind:class="{done: book.completed}">
+                <input type="checkbox" 
+                v-on:change="book.completed = !book.completed">
+                {{book.title}}
+                {{book.author}}
+            </span>
+            <span>
+                <button v-on:click="showForm">Edit</button>
+                <button 
+                v-on:click="$emit('remove-book', book.id)"
+                >Delete</button>
+            </span>
+        </div>
+        <div v-show="isEditing">
+            <label>Title</label>
+            <input type='text' v-model="book.title" >
+            <label>Author</label>
+            <input type='text' v-model="book.author" >
+            <button class='ui basic blue button' v-on:click="hideForm">Close</button>
+        </div>
     </li>
 </template>
 
@@ -19,6 +31,19 @@ export default {
             type: Object,
             required: true
         }
+    },
+    data() {
+        return {
+        isEditing: false,
+        }
+    },
+    methods: {
+        showForm() {
+            this.isEditing = true;
+        },
+        hideForm() {
+            this.isEditing = false;
+        },
     }
 }
 </script>
@@ -44,6 +69,7 @@ export default {
         border-radius: 5px;
         padding: .5rem 2rem;
         font-weight: bold;
+        margin-right: 30px;
     }
     .done {
         text-decoration: line-through;
